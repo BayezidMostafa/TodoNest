@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -71,5 +70,28 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Others */
+/* Define the animated gradient */
+.animated-gradient-text {
+  background: linear-gradient(45deg, #ff6ec4, #7873f5, #76e2ff);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientAnimation 3s ease-in-out infinite;
+}
+
+/* Gradient animation */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
