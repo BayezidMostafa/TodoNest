@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Montserrat } from "next/font/google";
-import { ClerkProvider, SignedIn, SignedOut } from "@clerk/nextjs";
-import Pre from "@/components/Auth/Pre";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -21,22 +19,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en" className={montserrat.className}>
-        <body className="antialiased">
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <SignedOut>
-              <Pre />
-            </SignedOut>
-            <SignedIn>{children}</SignedIn>
-          </ThemeProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en" className={montserrat.className}>
+      <body className="antialiased">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }
